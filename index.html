@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Aman — Community safety intelligence for Connecticut</title>
+  <meta name="description" content="Aman maps live crime, the sex-offender registry, Amber alerts and local news across all 169 Connecticut towns — and Amanix, your AI safety co-pilot, answers your questions. Free for residents." />
+  <meta name="theme-color" content="#0b1120" />
+  <meta name="color-scheme" content="dark" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/aman-mark.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/aman-mark.svg" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Aman" />
+  <meta property="og:title" content="Aman — Community safety intelligence for Connecticut" />
+  <meta property="og:description" content="Know your neighborhood before you trust it. Live crime, offender registry, Amber alerts and local news for all 169 CT towns — plus Amanix, your AI safety co-pilot." />
+  <meta property="og:image" content="assets/aman-mark.svg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Aman — Community safety intelligence for Connecticut" />
+  <meta name="twitter:description" content="Know your neighborhood before you trust it. Live safety intelligence for all 169 CT towns, free for residents." />
+  <meta name="twitter:image" content="assets/aman-mark.svg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Skip link for keyboard users -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- ============================== NAV ============================== -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <!-- Brand lockup: aman-mark SVG + wordmark -->
+      <a class="brand" href="#top" aria-label="Aman — home">
+        <img class="brand__mark" src="assets/aman-mark.svg" alt="" width="36" height="36" />
+        <span class="brand__word">Aman</span>
+      </a>
+
+      <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#data">Data</a>
+        <a href="#amanix">Amanix</a>
+        <a href="#faq">FAQ</a>
+        <!-- "Launch app" points to the Rails app in production -->
+        <a class="btn btn--primary nav__cta" href="#" data-app-link>Launch app</a>
+      </nav>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <span id="top"></span>
+
+    <!-- ============================== HERO ============================== -->
+    <section class="hero" aria-labelledby="hero-title">
+      <!-- Aurora blobs + masked grid live behind everything -->
+      <div class="aurora" aria-hidden="true">
+        <span class="aurora__blob aurora__blob--cyan"></span>
+        <span class="aurora__blob aurora__blob--blue"></span>
+        <span class="aurora__blob aurora__blob--purple"></span>
+      </div>
+      <div class="grid-overlay" aria-hidden="true"></div>
+
+      <div class="container hero__grid">
+        <div class="hero__copy reveal">
+          <span class="pill pill--live">
+            <span class="pill__dot" aria-hidden="true"></span>
+            Live · Connecticut
+          </span>
+
+          <h1 class="hero__title" id="hero-title">
+            Know your neighborhood
+            <span class="grad-text">before you trust it.</span>
+          </h1>
+
+          <p class="hero__sub">
+            Aman pulls live crime reports, the sex-offender registry, Amber alerts and
+            local news onto one map for every one of Connecticut's 169 towns — from
+            Hartford to New Haven, Stamford to Bridgeport. No noise, no guesswork.
+            Just a clear picture of what's happening around you.
+          </p>
+
+          <div class="hero__cta">
+            <a class="btn btn--primary btn--lg" href="#" data-app-link>Get started — free</a>
+            <a class="btn btn--ghost btn--lg" href="#how">See how it works</a>
+          </div>
+
+          <p class="hero__note">
+            Free for Connecticut residents · No credit card · Your location stays on your device
+          </p>
+        </div>
+
+        <!-- Product mock: live-map card + activity feed -->
+        <div class="hero__mock reveal" aria-hidden="true">
+          <div class="mapcard">
+            <div class="mapcard__head">
+              <span class="mapcard__title">
+                <span class="mapcard__dot"></span>
+                Live map · Hartford, CT
+              </span>
+              <span class="mapcard__time" data-clock>9:41 PM</span>
+            </div>
+
+            <div class="mapcard__canvas">
+              <!-- radar sweep -->
+              <span class="radar"></span>
+              <!-- grid lines for map feel -->
+              <span class="mapcard__lat"></span>
+              <span class="mapcard__lng"></span>
+
+              <!-- color-coded pulsing pins -->
+              <span class="pin pin--crime" style="top:34%; left:30%">
+                <span class="pin__label">Theft · 11 min ago</span>
+              </span>
+              <span class="pin pin--amber" style="top:58%; left:62%">
+                <span class="pin__label">Amber alert · active</span>
+              </span>
+              <span class="pin pin--registry" style="top:24%; left:68%">
+                <span class="pin__label">Registry · 0.4 mi</span>
+              </span>
+              <span class="pin pin--news" style="top:72%; left:26%">
+                <span class="pin__label">Road closure</span>
+              </span>
+            </div>
+
+            <div class="mapcard__legend">
+              <span><i class="lg lg--crime"></i>Crime</span>
+              <span><i class="lg lg--amber"></i>Amber</span>
+              <span><i class="lg lg--registry"></i>Registry</span>
+              <span><i class="lg lg--news"></i>News</span>
+            </div>
+          </div>
+
+          <div class="feedcard">
+            <div class="feedcard__head">Activity feed</div>
+            <ul class="feedcard__list">
+              <li class="feedrow">
+                <span class="feedrow__icon feedrow__icon--crime"></span>
+                <span class="feedrow__text"><strong>Larceny</strong> reported on Asylum Ave</span>
+                <span class="feedrow__time">11m</span>
+              </li>
+              <li class="feedrow">
+                <span class="feedrow__icon feedrow__icon--news"></span>
+                <span class="feedrow__text"><strong>I-84 W</strong> lane closed near Exit 48</span>
+                <span class="feedrow__time">26m</span>
+              </li>
+              <li class="feedrow">
+                <span class="feedrow__icon feedrow__icon--amber"></span>
+                <span class="feedrow__text"><strong>Amber alert</strong> issued · Tolland County</span>
+                <span class="feedrow__time">1h</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== TRUST / STAT BAND ====================== -->
+    <section class="stats reveal" aria-label="Aman by the numbers">
+      <div class="container stats__grid">
+        <div class="stat">
+          <span class="stat__num" data-count="169">169</span>
+          <span class="stat__label">Connecticut towns</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num" data-count="6">6</span>
+          <span class="stat__label">Live data feeds</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num" data-count="24" data-suffix="/7">24/7</span>
+          <span class="stat__label">Monitoring</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num stat__num--word">Free</span>
+          <span class="stat__label">For residents</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= FEATURES ========================= -->
+    <section class="section" id="features" aria-labelledby="features-title">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="eyebrow">Features</span>
+          <h2 class="section__title" id="features-title">
+            Everything that affects your safety, on <span class="grad-text">one map</span>.
+          </h2>
+          <p class="section__lead">
+            Six live layers, continuously refreshed and de-duplicated, so you see signal
+            instead of a firehose of raw alerts.
+          </p>
+        </div>
+
+        <div class="cards" id="featureCards">
+          <!-- Live Crime Map -->
+          <article class="card spotlight reveal">
+            <span class="card__icon card__icon--cyan" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2Z"/><path d="M9 4v14M15 6v14"/></svg>
+            </span>
+            <h3 class="card__title">Live crime map</h3>
+            <p class="card__body">
+              Incident-level reports from Connecticut's NIBRS feed, plotted the moment
+              departments publish them. Filter by type — larceny, assault, burglary,
+              motor-vehicle theft — and see the last 24 hours or the last 12 months.
+            </p>
+          </article>
+
+          <!-- Offender Registry -->
+          <article class="card spotlight reveal">
+            <span class="card__icon card__icon--purple" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v5c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+            </span>
+            <h3 class="card__title">Offender registry</h3>
+            <p class="card__body">
+              The public sex-offender registry, mapped to addresses near you and sourced
+              from the federal NSOPW system. Set a radius around your home or your child's
+              school and know exactly who is required to register nearby.
+            </p>
+          </article>
+
+          <!-- Amber & Missing Alerts -->
+          <article class="card spotlight reveal">
+            <span class="card__icon card__icon--amber" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.2 1.7 18a2 2 0 0 0 1.7 3h17.2a2 2 0 0 0 1.7-3L13.7 3.2a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg>
+            </span>
+            <h3 class="card__title">Amber &amp; missing alerts</h3>
+            <p class="card__body">
+              Active Amber alerts and missing-person bulletins for Connecticut, pulled from
+              NamUs and the National Weather Service CAP feed. You get the vehicle,
+              the description and the region — not just a buzz on your phone.
+            </p>
+          </article>
+
+          <!-- Amanix AI Assistant -->
+          <article class="card spotlight reveal card--feature-amanix">
+            <span class="card__icon card__icon--amanix" aria-hidden="true">
+              <img src="assets/amanix-mark.svg" alt="" width="30" height="30" />
+            </span>
+            <h3 class="card__title">Amanix AI assistant</h3>
+            <p class="card__body">
+              Ask in plain English — "How's crime trending on my street?" or "Is the
+              playground on Park St safe right now?" Amanix reads every layer and answers
+              with grounded, source-backed context. <a href="#amanix">Meet Amanix →</a>
+            </p>
+          </article>
+
+          <!-- Personalized Alert Radius -->
+          <article class="card spotlight reveal">
+            <span class="card__icon card__icon--green" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.7-7-11a7 7 0 0 1 14 0c0 5.3-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            </span>
+            <h3 class="card__title">Personalized alert radius</h3>
+            <p class="card__body">
+              Draw a radius around home, work or school and choose what's worth a
+              notification. Aman watches it for you and pings you only when something
+              inside your circle changes — quiet by default, loud when it matters.
+            </p>
+          </article>
+
+          <!-- Community Reporting -->
+          <article class="card spotlight reveal">
+            <span class="card__icon card__icon--blue" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.2 7.6L3 21l1.9-5.8A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8.5 12h7M8.5 9h5"/></svg>
+            </span>
+            <h3 class="card__title">Community reporting</h3>
+            <p class="card__body">
+              See something off? Drop a neighbor note — a broken streetlight, a suspicious
+              vehicle, an unlit underpass. Reports are time-stamped and shown alongside
+              official data so the whole block stays in the loop.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= HOW IT WORKS ========================= -->
+    <section class="section section--alt" id="how" aria-labelledby="how-title">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="eyebrow">How it works</span>
+          <h2 class="section__title" id="how-title">Set up in under a minute.</h2>
+          <p class="section__lead">No installs, no paperwork. Pick a spot and Aman does the watching.</p>
+        </div>
+
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step__num">1</span>
+            <h3 class="step__title">Set your location</h3>
+            <p class="step__body">
+              Drop a pin on your street in Bridgeport or just type your town. Add as many
+              places as you like — home, the kids' school, your parents in Waterbury.
+            </p>
+          </li>
+          <li class="step reveal">
+            <span class="step__num">2</span>
+            <h3 class="step__title">See live layers</h3>
+            <p class="step__body">
+              Crime, registry, alerts and news snap onto the map instantly. Toggle layers
+              on and off and scrub the timeline to see how your area has trended.
+            </p>
+          </li>
+          <li class="step reveal">
+            <span class="step__num">3</span>
+            <h3 class="step__title">Stay ahead</h3>
+            <p class="step__body">
+              Turn on alerts for your radius and let Amanix brief you. You'll know about an
+              Amber alert or a string of break-ins before it reaches the evening news.
+            </p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ========================= DATA SOURCES ========================= -->
+    <section class="section" id="data" aria-labelledby="data-title">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="eyebrow">Data sources</span>
+          <h2 class="section__title" id="data-title">
+            Built on official, <span class="grad-text">verified</span> sources.
+          </h2>
+          <p class="section__lead">
+            Aman doesn't scrape rumors. Every layer traces back to a government feed or a
+            recognized provider — refreshed continuously, with the source shown on every record.
+          </p>
+        </div>
+
+        <div class="sources reveal">
+          <div class="source">
+            <h3 class="source__name">CT Open Data · NIBRS</h3>
+            <p class="source__desc">Statewide incident-based crime reporting from the Connecticut Open Data portal.</p>
+          </div>
+          <div class="source">
+            <h3 class="source__name">NSOPW registry</h3>
+            <p class="source__desc">The U.S. Dept. of Justice National Sex Offender Public Website, the registry's official source.</p>
+          </div>
+          <div class="source">
+            <h3 class="source__name">NamUs · NWS CAP</h3>
+            <p class="source__desc">Missing-person records and Amber / emergency alerts via the National Weather Service CAP feed.</p>
+          </div>
+          <div class="source">
+            <h3 class="source__name">GDELT news</h3>
+            <p class="source__desc">Local Connecticut news and public-safety coverage, geolocated to your area in near real time.</p>
+          </div>
+          <div class="source">
+            <h3 class="source__name">Esri &amp; OpenStreetMap</h3>
+            <p class="source__desc">High-resolution basemaps and street data powering the map you actually look at.</p>
+          </div>
+          <div class="source">
+            <h3 class="source__name">CT State Police</h3>
+            <p class="source__desc">Non-emergency line surfaced in-app — <a href="tel:18606858000">860-685-8000</a> — alongside 911 for anything urgent.</p>
+          </div>
+        </div>
+
+        <p class="sources__note reveal">
+          Aman is an independent intelligence tool, not a law-enforcement agency. In an
+          emergency, always call <strong>911</strong>.
+        </p>
+      </div>
+    </section>
+
+    <!-- ========================= AMANIX ========================= -->
+    <section class="amanix" id="amanix" aria-labelledby="amanix-title">
+      <div class="aurora aurora--soft" aria-hidden="true">
+        <span class="aurora__blob aurora__blob--cyan"></span>
+        <span class="aurora__blob aurora__blob--purple"></span>
+      </div>
+
+      <div class="container amanix__grid">
+        <div class="amanix__copy reveal">
+          <span class="amanix__logo">
+            <img src="assets/amanix-mark.svg" alt="Amanix" width="64" height="64" />
+          </span>
+          <span class="eyebrow eyebrow--amanix">Amanix AI</span>
+          <h2 class="section__title" id="amanix-title">
+            Meet Amanix — your local <span class="grad-text">safety co-pilot</span>.
+          </h2>
+          <p class="section__lead">
+            Amanix sits on top of every Aman data layer and speaks plainly. Ask it anything
+            about your block, your route home or a town you're moving to. It answers with
+            real numbers, names the sources, and never pretends to be more certain than the
+            data allows.
+          </p>
+          <ul class="amanix__points">
+            <li>Grounded in live CT crime, registry and alert data — not guesses</li>
+            <li>Cites where every answer comes from</li>
+            <li>Always points you to 911 and the non-emergency line when it matters</li>
+          </ul>
+          <a class="btn btn--primary btn--lg" href="#" data-app-link>Ask Amanix</a>
+        </div>
+
+        <!-- Faux chat transcript -->
+        <div class="chat reveal" role="img" aria-label="Example conversation with the Amanix assistant about safety in Hartford">
+          <div class="chat__head">
+            <img class="chat__avatar" src="assets/amanix-mark.svg" alt="" width="30" height="30" />
+            <span class="chat__name">Amanix</span>
+            <span class="chat__status"><span class="chat__dot"></span>Online</span>
+          </div>
+
+          <div class="chat__body">
+            <div class="bubble bubble--user">
+              Is it safe to walk in Hartford at night?
+            </div>
+
+            <div class="bubble bubble--bot">
+              It depends a lot on where. Downtown around Pratt &amp; Front Street and the
+              Bushnell Park area are well-lit and busy in the evening, and the last 30 days
+              show mostly minor larceny there. I'd stick to lit, populated streets, keep your
+              phone out of sight, and avoid cutting through the park after midnight. For a
+              non-urgent concern you can reach CT State Police at <strong>860-685-8000</strong>,
+              and always dial <strong>911</strong> if you feel unsafe.
+            </div>
+
+            <div class="bubble bubble--user">
+              Any registry addresses near Asylum Hill?
+            </div>
+
+            <div class="bubble bubble--bot">
+              Yes — there are 3 registered addresses within half a mile of Asylum Hill, per
+              the NSOPW registry. Want me to drop them on your map and set a 0.5-mile alert
+              so you're notified if anything changes?
+              <span class="bubble__src">Source: NSOPW · updated today</span>
+            </div>
+          </div>
+
+          <div class="chat__input" aria-hidden="true">
+            <span class="chat__placeholder">Ask about any Connecticut town…</span>
+            <span class="chat__send">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4 20-7Z"/></svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= FAQ ========================= -->
+    <section class="section section--alt" id="faq" aria-labelledby="faq-title">
+      <div class="container container--narrow">
+        <div class="section__head reveal">
+          <span class="eyebrow">FAQ</span>
+          <h2 class="section__title" id="faq-title">Questions, answered.</h2>
+        </div>
+
+        <div class="faq reveal">
+          <details class="faq__item">
+            <summary>Is Aman free?</summary>
+            <div class="faq__answer">
+              Yes. Aman is free for Connecticut residents — the live map, all six data layers,
+              your alert radius and Amanix are included. No credit card, no trial clock.
+            </div>
+          </details>
+
+          <details class="faq__item">
+            <summary>Where does the data come from?</summary>
+            <div class="faq__answer">
+              From official and verified sources: Connecticut's NIBRS crime data on the CT Open
+              Data portal, the federal NSOPW sex-offender registry, NamUs and the NWS CAP feed
+              for missing-person and Amber alerts, GDELT for local news, and Esri / OpenStreetMap
+              for basemaps. Every record shows its source.
+            </div>
+          </details>
+
+          <details class="faq__item">
+            <summary>Is my location private?</summary>
+            <div class="faq__answer">
+              Your saved places live on your device and are used to filter what you see. We don't
+              sell location data, and you can clear your saved spots at any time. Amanix only uses
+              the area you ask about to answer your question.
+            </div>
+          </details>
+
+          <details class="faq__item">
+            <summary>Does it cover my town?</summary>
+            <div class="faq__answer">
+              All 169 Connecticut towns are covered — from large cities like Hartford, New Haven,
+              Stamford and Bridgeport down to small shoreline and rural towns. Coverage depth
+              depends on what each department reports to the state feeds.
+            </div>
+          </details>
+
+          <details class="faq__item">
+            <summary>How accurate is the registry data?</summary>
+            <div class="faq__answer">
+              Registry records come straight from NSOPW, the official federal source, and are
+              refreshed continuously. As with any public registry, addresses can lag real-world
+              moves, so Aman timestamps every record and labels its source. It's a tool for
+              awareness — not a substitute for official verification.
+            </div>
+          </details>
+
+          <details class="faq__item">
+            <summary>Can Aman replace calling the police?</summary>
+            <div class="faq__answer">
+              No. Aman is an intelligence and awareness tool, not an emergency service. For
+              anything urgent, call <strong>911</strong>. For non-emergencies, Aman surfaces the
+              CT State Police line, <a href="tel:18606858000">860-685-8000</a>, right in the app.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= FINAL CTA ========================= -->
+    <section class="cta-band reveal" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="cta-panel">
+          <div class="aurora aurora--soft" aria-hidden="true">
+            <span class="aurora__blob aurora__blob--cyan"></span>
+            <span class="aurora__blob aurora__blob--blue"></span>
+          </div>
+          <div class="cta-panel__inner">
+            <h2 class="cta-panel__title" id="cta-title">
+              Your neighborhood, <span class="grad-text">in focus</span>.
+            </h2>
+            <p class="cta-panel__sub">
+              Join your neighbors across Connecticut watching the same map. Set it up once and
+              let Aman keep an eye out.
+            </p>
+            <a class="btn btn--primary btn--lg" href="#" data-app-link>Create free account</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================= FOOTER ========================= -->
+  <footer class="footer" aria-labelledby="footer-heading">
+    <h2 id="footer-heading" class="visually-hidden">Footer</h2>
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="#top" aria-label="Aman — home">
+          <img class="brand__mark" src="assets/aman-mark.svg" alt="" width="34" height="34" />
+          <span class="brand__word">Aman</span>
+        </a>
+        <p class="footer__blurb">
+          Community safety intelligence for Connecticut. Live crime, registry, alerts and news
+          for all 169 towns — with Amanix to help you make sense of it.
+        </p>
+        <span class="pill pill--live pill--sm">
+          <span class="pill__dot" aria-hidden="true"></span>
+          All systems live
+        </span>
+      </div>
+
+      <nav class="footer__col" aria-label="Product">
+        <h3 class="footer__heading">Product</h3>
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#amanix">Amanix AI</a>
+        <a href="#" data-app-link>Launch app</a>
+      </nav>
+
+      <nav class="footer__col" aria-label="Data">
+        <h3 class="footer__heading">Data</h3>
+        <a href="#data">Sources</a>
+        <a href="#data">Coverage</a>
+        <a href="#faq">Accuracy</a>
+      </nav>
+
+      <nav class="footer__col" aria-label="Company">
+        <h3 class="footer__heading">Company</h3>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <a href="#">Careers</a>
+      </nav>
+
+      <nav class="footer__col" aria-label="Legal">
+        <h3 class="footer__heading">Legal</h3>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Data &amp; sources</a>
+      </nav>
+    </div>
+
+    <div class="container footer__bottom">
+      <span>© <span id="year">2026</span> Aman. Built for Connecticut.</span>
+      <span class="footer__fine">In an emergency, call 911 · Non-emergency 860-685-8000</span>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
