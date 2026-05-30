@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Amanix">
+  <title>Amanix</title>
+  <!-- neural network -->
+  <g stroke="#ffffff" fill="none">
+    <polygon points="100,22 167,61 167,139 100,178 33,139 33,61" stroke-width="2.2" stroke-linejoin="round" opacity="0.7"/>
+    <g stroke-width="1.6" opacity="0.4">
+      <line x1="100" y1="100" x2="100" y2="22"/>
+      <line x1="100" y1="100" x2="167" y2="61"/>
+      <line x1="100" y1="100" x2="167" y2="139"/>
+      <line x1="100" y1="100" x2="100" y2="178"/>
+      <line x1="100" y1="100" x2="33" y2="139"/>
+      <line x1="100" y1="100" x2="33" y2="61"/>
+    </g>
+  </g>
+  <!-- globe disc -->
+  <circle cx="100" cy="100" r="52" fill="#ffffff" opacity="0.16"/>
+  <circle cx="100" cy="100" r="52" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.55"/>
+  <!-- blade -->
+  <path d="M100 54 C117 68 115 92 100 100 C97 84 89 68 100 54 Z" fill="#ffffff"/>
+  <path d="M100 100 Q106 124 100 146 Q95 124 100 100 Z" fill="#ffffff" opacity="0.8"/>
+  <!-- nodes -->
+  <g fill="#ffffff">
+    <circle cx="100" cy="22" r="6"/><circle cx="167" cy="61" r="6"/><circle cx="167" cy="139" r="6"/>
+    <circle cx="100" cy="178" r="6"/><circle cx="33" cy="139" r="6"/><circle cx="33" cy="61" r="6"/>
+  </g>
+  <!-- hub -->
+  <circle cx="100" cy="100" r="13" fill="none" stroke="#ffffff" stroke-width="3"/>
+  <circle cx="100" cy="100" r="5" fill="#ffffff"/>
+</svg>
