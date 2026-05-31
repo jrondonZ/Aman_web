@@ -1,23 +1,39 @@
 # Aman — marketing website
 
-A standalone, static marketing site for **Aman**, a community safety intelligence
-platform for Connecticut, and its built-in AI assistant **Amanix**.
+A standalone, static marketing site for **Aman**, community safety intelligence
+for **every U.S. state and territory**, and its built-in AI assistant **Amanix**.
 
 Built with plain HTML, CSS and JavaScript — **no framework, no build step**. It
 deploys to any static host.
 
+## Brand & palette
+
+The UI is centered on the two brand logos:
+
+- **Aman — the Eye of Horus** (`assets/aman-logo.png`)
+- **Amanix — the Scarab** (`assets/amanix-logo.png`)
+
+The design system pulls its colors straight from that artwork: Egyptian **gold**
+and **sun-orange**, sacred **red**, and **royal blue**, set on a deep night-navy.
+The accent gradient (headings, stat numbers, the scroll bar) is a "sunrise" sweep
+of gold → orange → red — the sun disc and rays shared by both marks. Logos are
+presented inside light "seal" medallions so the full-colour artwork reads cleanly
+on the dark surface.
+
+The two logo images live in `assets/aman-logo.png` (Horus eye) and
+`assets/amanix-logo.png` (scarab) — see `assets/README.md`.
+
 ## Files
 
 ```
-website/
-├── index.html      # all page markup (single page, anchored sections)
-├── styles.css      # design system + all component styles
-├── script.js       # nav toggle, scroll progress, reveal-on-scroll, count-up, spotlight
-├── assets/         # brand SVGs (copied from the Rails app)
-│   ├── aman-mark.svg            # primary Aman globe logo
-│   ├── aman-mark-white.svg      # white monochrome variant
-│   ├── amanix-mark.svg          # Amanix neural-hexagon logo
-│   └── amanix-mark-white.svg    # white monochrome variant
+.
+├── index.html       # all page markup (single page, anchored sections)
+├── styles.css       # design system + all component styles
+├── script.js        # nav toggle, scroll progress, reveal-on-scroll, count-up, spotlight
+├── assets/
+│   ├── aman-logo.png     # Horus-eye logo — Aman
+│   ├── amanix-logo.png   # Scarab logo    — Amanix
+│   └── README.md
 └── README.md
 ```
 
@@ -27,32 +43,16 @@ It's static, so just open `index.html` — or serve the folder so relative paths
 and fonts behave exactly like production:
 
 ```bash
-# Python
-python3 -m http.server 8080 --directory website
-
-# or Node
-npx serve website
+python3 -m http.server 8080     # then visit http://localhost:8080
+# or: npx serve .
 ```
-
-Then visit http://localhost:8080.
 
 ## Deploy to GitHub Pages (quick start)
 
-These files are ready to serve as-is (note the included `.nojekyll`). To put them
-on GitHub Pages, extract this folder at the **root** of a repo, then:
-
-```bash
-git init
-git add .
-git commit -m "Aman marketing site"
-git branch -M main
-git remote add origin https://github.com/<you>/<repo>.git
-git push -u origin main
-```
-
-Then on GitHub: **Settings → Pages → Source: Deploy from a branch → Branch `main` /
-`/ (root)` → Save.** The site goes live at `https://<you>.github.io/<repo>/` within
-a minute. All asset links are relative, so it works under a project subpath too.
+These files serve as-is. To put them on GitHub Pages, keep them at the repo
+**root**, then in GitHub: **Settings → Pages → Source: Deploy from a branch →
+Branch `main` / `/ (root)` → Save.** All asset links are relative, so it works
+under a project subpath too.
 
 ### Other static hosts
 
@@ -71,6 +71,6 @@ before going live (search `data-app-link` in `index.html`).
 - Fonts: **Space Grotesk** (headings) + **Inter** (body) via Google Fonts.
 - Fully responsive; the nav collapses to a JS-toggled mobile menu.
 - Accessible: semantic landmarks, alt text, ARIA labels, visible focus styles,
-  and all animation (radar, aurora, count-up, reveals) is disabled under
+  and all animation (aurora, count-up, reveals) is disabled under
   `prefers-reduced-motion`.
 - No external JavaScript dependencies.
