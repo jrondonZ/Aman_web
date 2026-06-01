@@ -7,7 +7,7 @@
    - animated stat count-up
    - card cursor-follow spotlight
    - smooth anchor scrolling that closes the mobile menu
-   - current year + live mock clock
+   - current year in the footer
    All motion respects prefers-reduced-motion.
    ===================================================================== */
 (function () {
@@ -161,14 +161,4 @@
   /* ----------------------- Footer year --------------------------- */
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
-
-  /* ---------------- Live clock in the map mock ------------------- */
-  // Purely decorative: shows a real ticking time in the product mock.
-  var clockEl = document.querySelector("[data-clock]");
-  if (clockEl) {
-    var fmt = new Intl.DateTimeFormat([], { hour: "numeric", minute: "2-digit" });
-    function tick() { clockEl.textContent = fmt.format(new Date()); }
-    tick();
-    if (!reduceMotion) setInterval(tick, 30000);
-  }
 })();
