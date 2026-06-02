@@ -341,8 +341,16 @@ p { margin: 0; }
   font-size: 0.95rem;
 }
 .nav__links > a:not(.btn):hover { color: var(--text); }
-.nav__cta { margin-left: 6px; }
-
+/*.nav__cta { margin-left: 6px; }*/
+.nav__cta {
+  display: inline-block;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 12px 24px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
 .nav__toggle {
   display: none;
   flex-direction: column;
