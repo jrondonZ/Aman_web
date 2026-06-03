@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  Aman — Terms & Conditions
+  ─────────────────────────────────────────────────────────────────────────
+  DEVELOPER NOTES (delete before launch):
+  • Thorough, modern template — have counsel review before you rely on it.
+    It is not legal advice.
+  • Find-and-replace the bracketed placeholders:
+      [Aman Legal Entity]   – your registered company name (e.g., Aman, Inc.)
+      [Mailing Address]     – your business mailing address
+      [U.S. State]          – governing-law state for disputes/arbitration
+  • Update contact emails (legal@aman.app, privacy@aman.app) to real inboxes.
+  • Reuses styles.css + script.js from the site; drop this file at the repo root.
+-->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Terms &amp; Conditions — Aman</title>
+  <meta name="description" content="The terms that govern your use of Aman and the Amanix AI assistant, including acceptable use, disclaimers, and dispute resolution." />
+  <meta name="theme-color" content="#0b1022" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="robots" content="index, follow" />
+
+  <link rel="icon" href="assets/aman-logo.png" type="image/png" />
+  <link rel="apple-touch-icon" href="assets/aman-logo.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Legal-page typography (scoped); uses the design tokens from styles.css -->
+  <style>
+    .legalhead { position: relative; padding-block: clamp(40px, 7vw, 80px) 0; }
+    .legalhead__intro {
+      color: var(--text-soft);
+      font-size: clamp(1.02rem, 1.6vw, 1.18rem);
+      max-width: 70ch;
+      margin-top: 18px;
+    }
+    .legal-updated {
+      display: inline-flex; align-items: center; gap: 9px;
+      margin-top: 20px;
+      font-size: 0.84rem; color: var(--text-soft);
+    }
+    .legal-updated b { color: var(--gold); font-weight: 700; }
+
+    .legal-layout {
+      display: grid;
+      grid-template-columns: 244px 1fr;
+      gap: clamp(28px, 5vw, 60px);
+      align-items: start;
+      padding-block: clamp(36px, 5vw, 64px) clamp(56px, 8vw, 96px);
+    }
+    .legal-toc {
+      position: sticky; top: 90px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      backdrop-filter: blur(10px);
+      padding: 18px 18px 20px;
+      max-height: calc(100vh - 110px);
+      overflow: auto;
+    }
+    .legal-toc__title {
+      font-family: var(--font-body);
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--muted); margin: 0 0 12px;
+    }
+    .legal-toc ol { list-style: none; margin: 0; padding: 0; counter-reset: toc; display: grid; gap: 2px; }
+    .legal-toc li { counter-increment: toc; }
+    .legal-toc a {
+      display: block; padding: 6px 8px; border-radius: 8px;
+      color: var(--text-soft); font-size: 0.86rem; line-height: 1.4;
+    }
+    .legal-toc a::before { content: counter(toc) ". "; color: var(--gold); font-variant-numeric: tabular-nums; }
+    .legal-toc a:hover { background: rgba(245,179,1,0.08); color: var(--text); }
+
+    .legal-content { max-width: 760px; }
+    .legal-content > section { scroll-margin-top: 92px; padding-top: 14px; }
+    .legal-content > section + section { margin-top: 30px; border-top: 1px solid var(--border); }
+    .legal-content h2 {
+      font-size: clamp(1.3rem, 2.4vw, 1.62rem);
+      margin: 18px 0 14px; letter-spacing: -0.01em;
+    }
+    .legal-content h2 .num { color: var(--gold); margin-right: 10px; font-variant-numeric: tabular-nums; }
+    .legal-content h3 { font-size: 1.08rem; margin: 24px 0 8px; color: var(--text); }
+    .legal-content p { color: var(--text-soft); margin: 0 0 14px; }
+    .legal-content ul, .legal-content ol.list { color: var(--text-soft); margin: 0 0 16px; padding-left: 22px; }
+    .legal-content li { margin-bottom: 9px; }
+    .legal-content strong { color: var(--text); font-weight: 700; }
+    .legal-content a { color: var(--gold); }
+    .legal-content a:hover { color: var(--gold-bright); text-decoration: underline; }
+
+    .legal-note {
+      border: 1px solid var(--border-strong);
+      border-left: 3px solid var(--gold);
+      border-radius: var(--radius-sm);
+      background: linear-gradient(120deg, rgba(245,179,1,0.08), rgba(225,29,42,0.05));
+      padding: 16px 18px; margin: 4px 0 18px;
+      color: var(--text-soft); font-size: 0.95rem;
+    }
+    .legal-note strong { color: var(--text); }
+    .legal-caps { font-size: 0.92rem; }
+
+    @media (max-width: 900px) {
+      .legal-layout { grid-template-columns: 1fr; }
+      .legal-toc { position: static; max-height: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html" aria-label="Aman — home">
+        <span class="seal seal--sm"><img src="assets/aman-logo.png" alt="" width="38" height="38" /></span>
+        <span class="brand__word">Aman</span>
+      </a>
+      <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#data">Data</a>
+        <a href="index.html#amanix">Amanix</a>
+        <a href="index.html#faq">FAQ</a>
+        <a class="btn btn--primary nav__cta" href="#" data-app-link>Launch app</a>
+      </nav>
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HEADER -->
+    <section class="legalhead">
+      <div class="container">
+        <span class="eyebrow">Legal</span>
+        <h1 class="section__title">Terms &amp; Conditions</h1>
+        <p class="legalhead__intro">
+          These Terms &amp; Conditions (“<strong>Terms</strong>”) are a binding agreement between you
+          and <strong>[Aman Legal Entity]</strong> (“<strong>Aman</strong>,” “we,” “us,” or “our”)
+          and govern your access to and use of the Aman website, apps, APIs, and the Amanix AI
+          assistant (together, the “Services”). Please read them carefully.
+        </p>
+        <span class="legal-updated">Last updated: <b>June&nbsp;3,&nbsp;2026</b> · Effective: <b>June&nbsp;3,&nbsp;2026</b></span>
+      </div>
+    </section>
+
+    <div class="container legal-layout">
+      <!-- TABLE OF CONTENTS -->
+      <nav class="legal-toc" aria-label="On this page">
+        <p class="legal-toc__title">On this page</p>
+        <ol>
+          <li><a href="#agreement">Agreement to these terms</a></li>
+          <li><a href="#changes">Changes to the terms</a></li>
+          <li><a href="#eligibility">Eligibility</a></li>
+          <li><a href="#service">What Aman is (and isn’t)</a></li>
+          <li><a href="#emergency">Not an emergency service</a></li>
+          <li><a href="#accounts">Your account</a></li>
+          <li><a href="#billing">Access, subscriptions &amp; billing</a></li>
+          <li><a href="#license">License to use Aman</a></li>
+          <li><a href="#prohibited">Prohibited activities</a></li>
+          <li><a href="#registry-use">Lawful use of registry data</a></li>
+          <li><a href="#community">Community reporting &amp; content</a></li>
+          <li><a href="#amanix">Amanix AI assistant</a></li>
+          <li><a href="#accuracy">Data accuracy &amp; no advice</a></li>
+          <li><a href="#ip">Intellectual property</a></li>
+          <li><a href="#thirdparty">Third-party data &amp; services</a></li>
+          <li><a href="#termination">Suspension &amp; termination</a></li>
+          <li><a href="#disclaimers">Disclaimers</a></li>
+          <li><a href="#liability">Limitation of liability</a></li>
+          <li><a href="#indemnity">Indemnification</a></li>
+          <li><a href="#disputes">Disputes &amp; arbitration</a></li>
+          <li><a href="#general">General terms</a></li>
+          <li><a href="#contact">Contact us</a></li>
+        </ol>
+      </nav>
+
+      <!-- CONTENT -->
+      <div class="legal-content">
+        <section id="agreement">
+          <h2><span class="num">1</span>Agreement to these terms</h2>
+          <p>
+            By creating an account, accessing, or using the Services, you agree to these Terms and to
+            our <a href="privacy.html">Privacy Policy</a>, which is incorporated by reference. If you
+            use the Services on behalf of an organization, you represent that you are authorized to
+            bind that organization, and “you” includes that organization. If you do not agree, do not
+            use the Services.
+          </p>
+          <div class="legal-note">
+            These Terms contain a <a href="#disputes"><strong>binding arbitration agreement and a
+            class-action waiver</strong></a> that affect how disputes are resolved. Please read
+            Section&nbsp;20 carefully.
+          </div>
+        </section>
+
+        <section id="changes">
+          <h2><span class="num">2</span>Changes to the terms</h2>
+          <p>
+            We may update these Terms from time to time. If we make material changes, we will update
+            the “Last updated” date and provide reasonable notice (for example, by posting in the app
+            or emailing you). Changes take effect when posted unless stated otherwise. Your continued
+            use of the Services after changes become effective constitutes acceptance.
+          </p>
+        </section>
+
+        <section id="eligibility">
+          <h2><span class="num">3</span>Eligibility</h2>
+          <p>
+            You must be at least <strong>18 years old</strong> (or the age of majority where you
+            live) and able to form a binding contract to create an account and use the Services. The
+            Services are intended for use within the United States and its territories. You are
+            responsible for compliance with all laws that apply to you.
+          </p>
+        </section>
+
+        <section id="service">
+          <h2><span class="num">4</span>What Aman is (and isn’t)</h2>
+          <p>
+            Aman is a community-safety <strong>awareness and intelligence</strong> tool. It brings
+            together public-safety information — such as incident-level crime data, the sex-offender
+            registry, Amber and missing-person alerts, and local news — from official and recognized
+            sources for all 50 states and U.S. territories, and lets you ask the Amanix AI assistant
+            questions about it. Aman aggregates and presents third-party data; it does not create the
+            underlying records and is not a consumer reporting agency. You may not use the Services or
+            any data in them as a factor in establishing eligibility for credit, insurance,
+            employment, housing, or any other purpose regulated by the Fair Credit Reporting Act
+            (FCRA) or similar laws.
+          </p>
+        </section>
+
+        <section id="emergency">
+          <h2><span class="num">5</span>Not an emergency or law-enforcement service</h2>
+          <div class="legal-note">
+            <strong>Aman is not an emergency service and is not a substitute for law enforcement.</strong>
+            Do not rely on Aman in an emergency. If you are in danger or witness a crime in progress,
+            <strong>call 911</strong> (or your local emergency number) immediately. For non-emergencies,
+            contact your local police non-emergency line.
+          </div>
+        </section>
+
+        <section id="accounts">
+          <h2><span class="num">6</span>Your account</h2>
+          <p>
+            You agree to provide accurate information, keep it current, and maintain the security of
+            your credentials. You are responsible for all activity under your account. Notify us
+            promptly at <a href="mailto:support@aman.app">support@aman.app</a> of any unauthorized
+            use. We may refuse, suspend, or terminate accounts at our discretion as described in
+            <a href="#termination">Section&nbsp;16</a>.
+          </p>
+        </section>
+
+        <section id="billing">
+          <h2><span class="num">7</span>Access, subscriptions &amp; billing</h2>
+          <p>
+            Core features of Aman are offered free to residents. We may also offer paid tiers or
+            add-ons. If you purchase a paid subscription:
+          </p>
+          <ul>
+            <li>Fees, billing frequency, and features are shown at checkout and may change with notice.</li>
+            <li>Subscriptions <strong>automatically renew</strong> for successive periods unless you cancel before the renewal date through your account settings.</li>
+            <li>Except where required by law, payments are <strong>non-refundable</strong> and partial periods are not prorated.</li>
+            <li>You authorize us and our payment processor to charge your payment method for applicable fees and taxes.</li>
+            <li>We may change prices prospectively; changes apply to the next billing cycle.</li>
+          </ul>
+        </section>
+
+        <section id="license">
+          <h2><span class="num">8</span>License to use Aman</h2>
+          <p>
+            Subject to these Terms, we grant you a limited, non-exclusive, non-transferable,
+            revocable license to access and use the Services for your own personal, non-commercial
+            purposes. We reserve all rights not expressly granted. You may not use the Services beyond
+            the scope of this license.
+          </p>
+        </section>
+
+        <section id="prohibited">
+          <h2><span class="num">9</span>Prohibited activities</h2>
+          <p>You agree that you will <strong>not</strong>:</p>
+          <ul>
+            <li>Use Aman for any illegal purpose or in violation of any local, state, national, or international law.</li>
+            <li>Use Aman to stalk, harass, intimidate, or harm any individual.</li>
+            <li>Use Aman’s sex offender registry data to discriminate against protected classes in housing, employment, or services in violation of fair housing or equal opportunity laws.</li>
+            <li>Attempt to scrape, extract, or replicate Aman’s aggregated datasets for commercial use or resale.</li>
+            <li>Interfere with or disrupt Aman’s data ingestion pipelines, APIs, or AI services.</li>
+            <li>Use Aman’s AI assistant to generate harmful, threatening, or illegal content.</li>
+            <li>Create multiple accounts to circumvent usage limits, paid tiers, or account restrictions.</li>
+            <li>Impersonate another person, including law enforcement or government officials.</li>
+            <li>Attempt to reverse engineer, decompile, or extract Aman’s source code, safety scoring algorithms, or proprietary data processing methods.</li>
+            <li>Use Aman to submit false or misleading incident reports through community reporting features.</li>
+            <li>Upload viruses or malicious code through any input fields, file uploads, or API endpoints.</li>
+            <li>Use Aman to make decisions that violate the Fair Housing Act, Equal Credit Opportunity Act, or any consumer protection law.</li>
+          </ul>
+          <p>You also agree not to:</p>
+          <ul>
+            <li>Probe, scan, or test the vulnerability of, or breach or circumvent, any security or authentication measures.</li>
+            <li>Use bots, crawlers, or other automated means to access the Services except as expressly permitted by us in writing.</li>
+            <li>Remove, obscure, or alter any proprietary notices, or use our trademarks without permission.</li>
+            <li>Use the Services to build or train a competing product or service.</li>
+          </ul>
+          <p>Violating this section may result in suspension or termination and may expose you to civil or criminal liability.</p>
+        </section>
+
+        <section id="registry-use">
+          <h2><span class="num">10</span>Lawful use of registry &amp; public-safety data</h2>
+          <div class="legal-note">
+            Sex-offender registry information is made available for the purpose of <strong>public
+            safety and awareness only</strong>. Federal and state laws (including state “Megan’s Law”
+            statutes) <strong>prohibit using registry information to harass, threaten, intimidate, or
+            unlawfully discriminate against</strong> any person, and to commit a crime against any
+            registrant. Misuse may be a criminal offense and may subject you to civil liability.
+          </div>
+          <p>
+            You agree to use incident, registry, and other public-safety data only for lawful,
+            personal-safety purposes, and never as a factor for decisions governed by the FCRA, the
+            Fair Housing Act, the Equal Credit Opportunity Act, or other consumer-protection or
+            anti-discrimination laws. Records may be incomplete, delayed, or inaccurate; verify with
+            the official source before taking action.
+          </p>
+        </section>
+
+        <section id="community">
+          <h2><span class="num">11</span>Community reporting &amp; user content</h2>
+          <p>
+            The Services may let you submit reports, notes, photos, and other content (“<strong>User
+            Content</strong>”). You retain ownership of your User Content. You grant us a worldwide,
+            non-exclusive, royalty-free, sublicensable license to host, store, reproduce, modify,
+            display, and distribute your User Content to operate, improve, and promote the Services.
+          </p>
+          <p>You represent that your User Content is accurate, lawful, and does not infringe others’ rights. You must not submit false, misleading, defamatory, or unlawful content, or content that identifies or targets individuals for harassment. We may, but are not obligated to, review, moderate, or remove User Content, and we may remove content or restrict accounts that violate these Terms.</p>
+        </section>
+
+        <section id="amanix">
+          <h2><span class="num">12</span>Amanix AI assistant</h2>
+          <p>
+            Amanix generates responses using AI and the data layers available to Aman. <strong>AI
+            output may be inaccurate, incomplete, or out of date</strong> and may not reflect the most
+            current records. Amanix does not provide legal, safety, medical, financial, or
+            professional advice, and its responses are not a substitute for official sources or
+            professional judgment. You are responsible for how you use Amanix output, and you must not
+            use it for any purpose prohibited by <a href="#prohibited">Section&nbsp;9</a>. See our
+            <a href="privacy.html#amanix">Privacy Policy</a> for how we handle your prompts.
+          </p>
+        </section>
+
+        <section id="accuracy">
+          <h2><span class="num">13</span>Data accuracy &amp; no professional advice</h2>
+          <p>
+            Aman aggregates third-party data that we do not control and cannot guarantee to be
+            accurate, complete, current, or available. The Services are provided for general
+            informational and awareness purposes only and do not constitute professional advice. Your
+            reliance on any information is at your own risk; independently verify anything important
+            with the official source.
+          </p>
+        </section>
+
+        <section id="ip">
+          <h2><span class="num">14</span>Intellectual property</h2>
+          <p>
+            The Services, including their software, design, text, graphics, the “Aman” and “Amanix”
+            names and logos, and all related intellectual property, are owned by us or our licensors
+            and protected by law. Except for the limited license in <a href="#license">Section&nbsp;8</a>,
+            nothing in these Terms transfers any rights to you. If you send us feedback or
+            suggestions, you grant us a perpetual, irrevocable, royalty-free license to use them
+            without restriction.
+          </p>
+        </section>
+
+        <section id="thirdparty">
+          <h2><span class="num">15</span>Third-party data &amp; services</h2>
+          <p>
+            The Services rely on and link to third-party data sources and services (for example,
+            government feeds, mapping, geocoding, and authentication providers). We are not
+            responsible for third-party content, accuracy, availability, or practices, and your use of
+            third-party services may be subject to their own terms.
+          </p>
+        </section>
+
+        <section id="termination">
+          <h2><span class="num">16</span>Suspension &amp; termination</h2>
+          <p>
+            You may stop using the Services and close your account at any time. We may suspend or
+            terminate your access, with or without notice, if you violate these Terms, create risk or
+            legal exposure, or if we discontinue the Services. Upon termination, your license ends and
+            provisions that by their nature should survive (including ownership, disclaimers,
+            limitations of liability, indemnification, and dispute resolution) will survive.
+          </p>
+        </section>
+
+        <section id="disclaimers">
+          <h2><span class="num">17</span>Disclaimers</h2>
+          <p class="legal-caps">
+            THE SERVICES AND ALL DATA ARE PROVIDED “AS IS” AND “AS AVAILABLE,” WITHOUT WARRANTIES OF
+            ANY KIND, WHETHER EXPRESS, IMPLIED, OR STATUTORY, INCLUDING IMPLIED WARRANTIES OF
+            MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT, AND ANY
+            WARRANTIES ARISING FROM COURSE OF DEALING OR USAGE OF TRADE. WE DO NOT WARRANT THAT THE
+            SERVICES WILL BE UNINTERRUPTED, SECURE, OR ERROR-FREE, OR THAT ANY DATA WILL BE ACCURATE,
+            COMPLETE, OR CURRENT. SOME JURISDICTIONS DO NOT ALLOW CERTAIN DISCLAIMERS, SO SOME MAY NOT
+            APPLY TO YOU.
+          </p>
+        </section>
+
+        <section id="liability">
+          <h2><span class="num">18</span>Limitation of liability</h2>
+          <p class="legal-caps">
+            TO THE MAXIMUM EXTENT PERMITTED BY LAW, AMAN AND ITS AFFILIATES, OFFICERS, EMPLOYEES, AND
+            LICENSORS WILL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL,
+            EXEMPLARY, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS, DATA, GOODWILL, OR FOR PERSONAL
+            INJURY OR PROPERTY DAMAGE, ARISING OUT OF OR RELATING TO THE SERVICES OR THESE TERMS,
+            WHETHER BASED ON WARRANTY, CONTRACT, TORT, OR ANY OTHER THEORY, EVEN IF ADVISED OF THE
+            POSSIBILITY OF SUCH DAMAGES. OUR TOTAL LIABILITY FOR ALL CLAIMS RELATING TO THE SERVICES
+            WILL NOT EXCEED THE GREATER OF (A) THE AMOUNT YOU PAID US IN THE 12 MONTHS BEFORE THE EVENT
+            GIVING RISE TO THE CLAIM, OR (B) USD $100. SOME JURISDICTIONS DO NOT ALLOW CERTAIN
+            LIMITATIONS, SO SOME MAY NOT APPLY TO YOU.
+          </p>
+        </section>
+
+        <section id="indemnity">
+          <h2><span class="num">19</span>Indemnification</h2>
+          <p>
+            You agree to indemnify, defend, and hold harmless Aman and its affiliates from and against
+            any claims, liabilities, damages, losses, and expenses (including reasonable attorneys’
+            fees) arising out of or related to your use of the Services, your User Content, your
+            violation of these Terms, or your violation of any law or the rights of any third party.
+          </p>
+        </section>
+
+        <section id="disputes">
+          <h2><span class="num">20</span>Dispute resolution &amp; arbitration</h2>
+          <p><strong>Please read this section carefully — it affects your legal rights.</strong></p>
+          <p>
+            <strong>Informal resolution.</strong> Before filing a claim, you agree to contact us at
+            <a href="mailto:legal@aman.app">legal@aman.app</a> and try to resolve the dispute
+            informally for at least 60 days.
+          </p>
+          <p>
+            <strong>Binding arbitration.</strong> If we can’t resolve it, you and Aman agree that any
+            dispute arising out of or relating to these Terms or the Services will be resolved by
+            <strong>final and binding arbitration</strong> administered by the American Arbitration
+            Association (AAA) under its Consumer Arbitration Rules, rather than in court, except that
+            either party may bring an individual claim in small-claims court.
+          </p>
+          <p class="legal-caps">
+            <strong>CLASS-ACTION WAIVER.</strong> YOU AND AMAN AGREE THAT EACH MAY BRING CLAIMS ONLY IN
+            AN INDIVIDUAL CAPACITY, AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY CLASS, COLLECTIVE, OR
+            REPRESENTATIVE PROCEEDING. THE ARBITRATOR MAY NOT CONSOLIDATE MORE THAN ONE PERSON’S CLAIMS.
+          </p>
+          <p>
+            <strong>30-day opt-out.</strong> You may opt out of this arbitration agreement by emailing
+            <a href="mailto:legal@aman.app">legal@aman.app</a> within 30 days of first accepting these
+            Terms, stating your name and intent to opt out. Nothing here prevents either party from
+            seeking injunctive relief for intellectual-property or unauthorized-access claims.
+          </p>
+          <p>
+            <strong>Governing law.</strong> These Terms are governed by the laws of the State of
+            <strong>[U.S. State]</strong> and the Federal Arbitration Act, without regard to
+            conflict-of-laws rules. To the extent any dispute is not subject to arbitration, it will be
+            brought exclusively in the state or federal courts located in <strong>[U.S. State]</strong>,
+            and you consent to their jurisdiction.
+          </p>
+        </section>
+
+        <section id="general">
+          <h2><span class="num">21</span>General terms</h2>
+          <p>
+            These Terms and the Privacy Policy are the entire agreement between you and Aman regarding
+            the Services and supersede prior agreements. If any provision is found unenforceable, the
+            remaining provisions remain in effect. Our failure to enforce a provision is not a waiver.
+            You may not assign these Terms without our consent; we may assign them in connection with a
+            merger, acquisition, or sale of assets. There are no third-party beneficiaries. We are not
+            liable for delays or failures caused by events beyond our reasonable control. We may
+            provide notices to you in the app or by email, and you consent to receive communications
+            electronically.
+          </p>
+        </section>
+
+        <section id="contact">
+          <h2><span class="num">22</span>Contact us</h2>
+          <p>Questions about these Terms?</p>
+          <ul>
+            <li>Email: <a href="mailto:legal@aman.app">legal@aman.app</a></li>
+            <li>Mail: <strong>[Aman Legal Entity]</strong>, [Mailing Address]</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" aria-labelledby="footer-heading">
+    <h2 id="footer-heading" class="visually-hidden">Footer</h2>
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="index.html" aria-label="Aman — home">
+          <span class="seal seal--sm"><img src="assets/aman-logo.png" alt="" width="38" height="38" /></span>
+          <span class="brand__word">Aman</span>
+        </a>
+        <p class="footer__blurb">
+          Community safety intelligence for every U.S. state and territory. Live crime,
+          registry, alerts and news — with Amanix to help you make sense of it.
+        </p>
+        <span class="pill pill--live pill--sm">
+          <span class="pill__dot" aria-hidden="true"></span>
+          All systems live
+        </span>
+      </div>
+      <nav class="footer__col" aria-label="Product">
+        <h3 class="footer__heading">Product</h3>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#amanix">Amanix AI</a>
+        <a href="#" data-app-link>Launch app</a>
+      </nav>
+      <nav class="footer__col" aria-label="Data">
+        <h3 class="footer__heading">Data</h3>
+        <a href="index.html#data">Sources</a>
+        <a href="index.html#data">Coverage</a>
+        <a href="index.html#faq">Accuracy</a>
+      </nav>
+      <nav class="footer__col" aria-label="Company">
+        <h3 class="footer__heading">Company</h3>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <a href="#">Careers</a>
+      </nav>
+      <nav class="footer__col" aria-label="Legal">
+        <h3 class="footer__heading">Legal</h3>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html" aria-current="page">Terms</a>
+        <a href="index.html#data">Data &amp; sources</a>
+      </nav>
+    </div>
+    <div class="container footer__bottom">
+      <span>© <span id="year">2026</span> Aman. Built for every American neighborhood.</span>
+      <span class="footer__fine">In an emergency, call 911 · Aman is not an emergency service</span>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

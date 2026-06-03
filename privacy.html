@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  Aman — Privacy Policy
+  ─────────────────────────────────────────────────────────────────────────
+  DEVELOPER NOTES (delete before launch):
+  • This is a thorough, modern template — have counsel review it before you
+    rely on it. It is not legal advice.
+  • Find-and-replace the bracketed placeholders:
+      [Aman Legal Entity]   – your registered company name (e.g., Aman, Inc.)
+      [Mailing Address]     – your business mailing address
+      [U.S. State]          – governing-law state for the Terms/disputes
+  • Update contact emails (privacy@aman.app, dpo@aman.app) to real inboxes.
+  • Reuses styles.css + script.js from the site; drop this file at the repo root.
+-->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Privacy Policy — Aman</title>
+  <meta name="description" content="How Aman collects, uses, shares and protects your information — and the privacy rights and choices available to you." />
+  <meta name="theme-color" content="#0b1022" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="robots" content="index, follow" />
+
+  <link rel="icon" href="assets/aman-logo.png" type="image/png" />
+  <link rel="apple-touch-icon" href="assets/aman-logo.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Legal-page typography (scoped); uses the design tokens from styles.css -->
+  <style>
+    .legalhead { position: relative; padding-block: clamp(40px, 7vw, 80px) 0; }
+    .legalhead__intro {
+      color: var(--text-soft);
+      font-size: clamp(1.02rem, 1.6vw, 1.18rem);
+      max-width: 70ch;
+      margin-top: 18px;
+    }
+    .legal-updated {
+      display: inline-flex; align-items: center; gap: 9px;
+      margin-top: 20px;
+      font-size: 0.84rem; color: var(--text-soft);
+    }
+    .legal-updated b { color: var(--gold); font-weight: 700; }
+
+    .legal-layout {
+      display: grid;
+      grid-template-columns: 244px 1fr;
+      gap: clamp(28px, 5vw, 60px);
+      align-items: start;
+      padding-block: clamp(36px, 5vw, 64px) clamp(56px, 8vw, 96px);
+    }
+    .legal-toc {
+      position: sticky; top: 90px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      backdrop-filter: blur(10px);
+      padding: 18px 18px 20px;
+      max-height: calc(100vh - 110px);
+      overflow: auto;
+    }
+    .legal-toc__title {
+      font-family: var(--font-body);
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--muted); margin: 0 0 12px;
+    }
+    .legal-toc ol { list-style: none; margin: 0; padding: 0; counter-reset: toc; display: grid; gap: 2px; }
+    .legal-toc li { counter-increment: toc; }
+    .legal-toc a {
+      display: block; padding: 6px 8px; border-radius: 8px;
+      color: var(--text-soft); font-size: 0.86rem; line-height: 1.4;
+    }
+    .legal-toc a::before { content: counter(toc) ". "; color: var(--gold); font-variant-numeric: tabular-nums; }
+    .legal-toc a:hover { background: rgba(245,179,1,0.08); color: var(--text); }
+
+    .legal-content { max-width: 760px; }
+    .legal-content > section { scroll-margin-top: 92px; padding-top: 14px; }
+    .legal-content > section + section { margin-top: 30px; border-top: 1px solid var(--border); }
+    .legal-content h2 {
+      font-size: clamp(1.3rem, 2.4vw, 1.62rem);
+      margin: 18px 0 14px; letter-spacing: -0.01em;
+    }
+    .legal-content h2 .num { color: var(--gold); margin-right: 10px; font-variant-numeric: tabular-nums; }
+    .legal-content h3 { font-size: 1.08rem; margin: 24px 0 8px; color: var(--text); }
+    .legal-content p { color: var(--text-soft); margin: 0 0 14px; }
+    .legal-content ul, .legal-content ol.list { color: var(--text-soft); margin: 0 0 16px; padding-left: 22px; }
+    .legal-content li { margin-bottom: 9px; }
+    .legal-content strong { color: var(--text); font-weight: 700; }
+    .legal-content a { color: var(--gold); }
+    .legal-content a:hover { color: var(--gold-bright); text-decoration: underline; }
+
+    .legal-note {
+      border: 1px solid var(--border-strong);
+      border-left: 3px solid var(--gold);
+      border-radius: var(--radius-sm);
+      background: linear-gradient(120deg, rgba(245,179,1,0.08), rgba(225,29,42,0.05));
+      padding: 16px 18px; margin: 4px 0 18px;
+      color: var(--text-soft); font-size: 0.95rem;
+    }
+    .legal-note strong { color: var(--text); }
+
+    .legal-table { width: 100%; border-collapse: collapse; margin: 4px 0 18px; font-size: 0.92rem; }
+    .legal-table th, .legal-table td {
+      text-align: left; vertical-align: top;
+      padding: 11px 12px; border: 1px solid var(--border);
+      color: var(--text-soft);
+    }
+    .legal-table th { color: var(--text); font-family: var(--font-display); font-weight: 600; background: rgba(245,179,1,0.05); }
+
+    @media (max-width: 900px) {
+      .legal-layout { grid-template-columns: 1fr; }
+      .legal-toc { position: static; max-height: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html" aria-label="Aman — home">
+        <span class="seal seal--sm"><img src="assets/aman-logo.png" alt="" width="38" height="38" /></span>
+        <span class="brand__word">Aman</span>
+      </a>
+      <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#data">Data</a>
+        <a href="index.html#amanix">Amanix</a>
+        <a href="index.html#faq">FAQ</a>
+        <a class="btn btn--primary nav__cta" href="#" data-app-link>Launch app</a>
+      </nav>
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HEADER -->
+    <section class="legalhead">
+      <div class="container">
+        <span class="eyebrow">Legal</span>
+        <h1 class="section__title">Privacy Policy</h1>
+        <p class="legalhead__intro">
+          Aman (“<strong>Aman</strong>,” “we,” “us,” or “our”) helps you understand what’s
+          happening around you by bringing public-safety information into one clear view.
+          This Privacy Policy explains what information we collect, how we use and share it,
+          and the choices and rights you have. It applies to our website, apps, and the
+          Amanix AI assistant (together, the “Services”).
+        </p>
+        <span class="legal-updated">Last updated: <b>June&nbsp;3,&nbsp;2026</b> · Effective: <b>June&nbsp;3,&nbsp;2026</b></span>
+      </div>
+    </section>
+
+    <div class="container legal-layout">
+      <!-- TABLE OF CONTENTS -->
+      <nav class="legal-toc" aria-label="On this page">
+        <p class="legal-toc__title">On this page</p>
+        <ol>
+          <li><a href="#scope">Scope &amp; who we are</a></li>
+          <li><a href="#collect">Information we collect</a></li>
+          <li><a href="#sensitive">Sensitive &amp; location data</a></li>
+          <li><a href="#use">How we use information</a></li>
+          <li><a href="#amanix">Amanix AI &amp; your data</a></li>
+          <li><a href="#legal-bases">Legal bases (EEA/UK)</a></li>
+          <li><a href="#share">How we share information</a></li>
+          <li><a href="#sell">Selling &amp; targeted ads</a></li>
+          <li><a href="#cookies">Cookies &amp; tracking</a></li>
+          <li><a href="#retention">Data retention</a></li>
+          <li><a href="#security">Data security</a></li>
+          <li><a href="#rights">Your rights &amp; choices</a></li>
+          <li><a href="#us-states">U.S. state disclosures</a></li>
+          <li><a href="#intl">EEA, UK &amp; transfers</a></li>
+          <li><a href="#children">Children’s privacy</a></li>
+          <li><a href="#public">Public records &amp; registry data</a></li>
+          <li><a href="#thirdparty">Third-party links</a></li>
+          <li><a href="#changes">Changes to this policy</a></li>
+          <li><a href="#contact">Contact us</a></li>
+        </ol>
+      </nav>
+
+      <!-- CONTENT -->
+      <div class="legal-content">
+        <section id="scope">
+          <h2><span class="num">1</span>Scope &amp; who we are</h2>
+          <p>
+            This Policy applies to personal information we process as the controller of the
+            Services. The data controller is <strong>[Aman Legal Entity]</strong>. It does
+            <em>not</em> apply to the underlying government and third-party records that Aman
+            displays (for example, incident and registry records), which originate from the
+            official sources described in our <a href="terms.html#service">Terms</a> and on the
+            <a href="index.html#data">Data sources</a> page. Those records are public information
+            about third parties, not information we collect from you.
+          </p>
+          <p>
+            By using the Services, you acknowledge this Policy. If you do not agree, please do
+            not use the Services.
+          </p>
+        </section>
+
+        <section id="collect">
+          <h2><span class="num">2</span>Information we collect</h2>
+          <h3>Information you provide</h3>
+          <ul>
+            <li><strong>Account information</strong> — name or display name, email address, and a password or third-party sign-in identifier when you create an account.</li>
+            <li><strong>Saved places &amp; alert preferences</strong> — addresses, pins, radii, and the layers and notifications you choose to follow.</li>
+            <li><strong>Community reports</strong> — notes, descriptions, categories, optional photos, and the location you attach when you submit a neighbor report.</li>
+            <li><strong>Amanix prompts</strong> — the questions and messages you send to the Amanix AI assistant.</li>
+            <li><strong>Payments</strong> — if you purchase a paid tier, our payment processor collects your billing details; we receive limited transaction data (such as the last four digits of a card and billing ZIP), not full card numbers.</li>
+            <li><strong>Support &amp; communications</strong> — messages you send us and your survey or feedback responses.</li>
+          </ul>
+          <h3>Information collected automatically</h3>
+          <ul>
+            <li><strong>Device &amp; technical data</strong> — IP address, device and browser type, operating system, app version, language, and identifiers.</li>
+            <li><strong>Usage data</strong> — pages and features viewed, searches, layers toggled, interactions, and timestamps.</li>
+            <li><strong>Approximate location</strong> — coarse location inferred from your IP address, and—only with your permission—precise device location to center your map and alerts.</li>
+            <li><strong>Cookies &amp; similar technologies</strong> — see <a href="#cookies">Cookies &amp; tracking</a>.</li>
+          </ul>
+          <h3>Information from other sources</h3>
+          <p>
+            We receive information from service providers (such as analytics, hosting, mapping,
+            geocoding, and authentication partners) and, if you sign in with a third party, the
+            basic profile information that provider shares. We also ingest public-safety datasets
+            from official sources to power the Services — see <a href="#public">Public records &amp;
+            registry data</a>.
+          </p>
+        </section>
+
+        <section id="sensitive">
+          <h2><span class="num">3</span>Sensitive &amp; location data</h2>
+          <p>
+            Precise geolocation is treated as <strong>sensitive information</strong>. We ask for it
+            only when you enable it, use it to deliver the feature you requested (centering your
+            view and watching your alert radius), and you can turn it off at any time in your device
+            settings. Wherever practical, your saved places and alert radii are kept on your device
+            and used to filter what you see, rather than continuously transmitted to us.
+          </p>
+          <p>
+            We do not use sensitive information to infer characteristics about you, and we do not
+            sell it or share it for cross-context behavioral advertising.
+          </p>
+        </section>
+
+        <section id="use">
+          <h2><span class="num">4</span>How we use information</h2>
+          <ul>
+            <li>Provide, maintain, secure, and improve the Services and personalize your map, layers, and alerts.</li>
+            <li>Send notifications you’ve requested (for example, activity inside your alert radius).</li>
+            <li>Operate the Amanix AI assistant and answer your questions with source-backed context.</li>
+            <li>Process transactions and manage subscriptions, free-tier eligibility, and account limits.</li>
+            <li>Respond to support requests and communicate service, security, and policy updates.</li>
+            <li>Detect, prevent, and investigate fraud, abuse, security incidents, and violations of our <a href="terms.html">Terms</a>.</li>
+            <li>Analyze usage to understand and improve performance, reliability, and features.</li>
+            <li>Comply with legal obligations and enforce our rights.</li>
+          </ul>
+          <p>
+            We may create de-identified or aggregated information that cannot reasonably be used to
+            identify you and use it for any lawful purpose, including improving the Services. We
+            will maintain and use such information in de-identified form and not attempt to
+            re-identify it except as permitted by law.
+          </p>
+        </section>
+
+        <section id="amanix">
+          <h2><span class="num">5</span>Amanix AI &amp; your data</h2>
+          <p>
+            When you use Amanix, we process your prompts together with relevant Aman data layers to
+            generate a response. We use prompts and conversations to operate the assistant, keep it
+            safe and reliable, and improve our Services. <strong>We do not sell your Amanix
+            conversations, and we do not use them to train third-party foundation models for their
+            own purposes.</strong> Please don’t enter information you consider confidential or that
+            identifies others unnecessarily. Amanix can be wrong or incomplete — see the
+            <a href="terms.html#amanix">Amanix terms</a> and always rely on official sources for
+            consequential decisions.
+          </p>
+        </section>
+
+        <section id="legal-bases">
+          <h2><span class="num">6</span>Legal bases (EEA/UK)</h2>
+          <p>If you are in the European Economic Area, the United Kingdom, or Switzerland, we rely on these legal bases:</p>
+          <ul>
+            <li><strong>Contract</strong> — to provide the Services you request and manage your account.</li>
+            <li><strong>Legitimate interests</strong> — to secure, analyze, and improve the Services, where not overridden by your rights.</li>
+            <li><strong>Consent</strong> — for precise location, certain cookies, and optional communications; you may withdraw consent at any time.</li>
+            <li><strong>Legal obligation</strong> — to comply with applicable laws and lawful requests.</li>
+          </ul>
+        </section>
+
+        <section id="share">
+          <h2><span class="num">7</span>How we share information</h2>
+          <ul>
+            <li><strong>Service providers / processors</strong> — vendors that host, secure, analyze, map, geocode, message, and process payments on our behalf, under contracts limiting their use of the data.</li>
+            <li><strong>At your direction</strong> — when you choose to share a report, link, or content.</li>
+            <li><strong>Legal &amp; safety</strong> — to comply with law, lawful requests, or legal process; to enforce our Terms; or to protect the rights, property, or safety of users, the public, or Aman.</li>
+            <li><strong>Business transfers</strong> — in connection with a merger, acquisition, financing, or sale of assets, subject to this Policy.</li>
+            <li><strong>Aggregated / de-identified information</strong> — which does not identify you.</li>
+          </ul>
+        </section>
+
+        <section id="sell">
+          <h2><span class="num">8</span>Selling &amp; targeted advertising</h2>
+          <div class="legal-note">
+            <strong>We do not sell your personal information for money, and we do not share it for
+            cross-context behavioral (“targeted”) advertising</strong> as those terms are defined
+            under U.S. state privacy laws. We honor opt-out preference signals such as Global
+            Privacy Control (GPC) where required.
+          </div>
+        </section>
+
+        <section id="cookies">
+          <h2><span class="num">9</span>Cookies &amp; tracking technologies</h2>
+          <p>
+            We use strictly necessary cookies to run the site and keep you signed in, and limited
+            functional and analytics cookies to remember preferences and understand usage. You can
+            control cookies through your browser settings and, where offered, our cookie controls.
+            Blocking some cookies may affect how the Services work. Where required, we obtain consent
+            before setting non-essential cookies and honor GPC signals.
+          </p>
+        </section>
+
+        <section id="retention">
+          <h2><span class="num">10</span>Data retention</h2>
+          <p>
+            We keep personal information only as long as needed for the purposes in this Policy —
+            for example, for the life of your account and a reasonable period afterward — and as
+            required to comply with legal, tax, accounting, security, and dispute-resolution
+            obligations. We then delete or de-identify it. Community reports may persist in the
+            Services after account closure in de-identified form.
+          </p>
+        </section>
+
+        <section id="security">
+          <h2><span class="num">11</span>Data security</h2>
+          <p>
+            We use administrative, technical, and organizational safeguards designed to protect
+            personal information, including encryption in transit, access controls, and monitoring.
+            No method of transmission or storage is 100% secure, so we cannot guarantee absolute
+            security. Use a strong, unique password and keep your credentials confidential.
+          </p>
+        </section>
+
+        <section id="rights">
+          <h2><span class="num">12</span>Your rights &amp; choices</h2>
+          <p>Depending on where you live, you may have the right to:</p>
+          <ul>
+            <li>Access or receive a copy of your personal information (portability).</li>
+            <li>Correct inaccurate information.</li>
+            <li>Delete your information.</li>
+            <li>Opt out of sale, sharing for targeted advertising, or certain profiling.</li>
+            <li>Limit use of sensitive information.</li>
+            <li>Withdraw consent and unsubscribe from marketing.</li>
+            <li>Not receive discriminatory treatment for exercising your rights.</li>
+          </ul>
+          <p>
+            To exercise these rights, email <a href="mailto:privacy@aman.app">privacy@aman.app</a> or
+            use the in-app controls. We will verify your request (and an authorized agent’s
+            authority) and respond within the time required by law. You may appeal a decision by
+            replying to our response; if you remain unsatisfied, you may contact your state attorney
+            general.
+          </p>
+        </section>
+
+        <section id="us-states">
+          <h2><span class="num">13</span>U.S. state privacy disclosures</h2>
+          <p>
+            Residents of California, Virginia, Colorado, Connecticut, Utah, and other states with
+            comprehensive privacy laws have the rights described above. In the past 12 months we
+            collected the categories of personal information described in
+            <a href="#collect">Information we collect</a> (identifiers, account and commercial
+            information, internet/usage activity, approximate and—with consent—precise geolocation,
+            and inferences), for the purposes in <a href="#use">How we use information</a>, and
+            disclosed certain categories to the service providers and recipients in
+            <a href="#share">How we share information</a>.
+          </p>
+          <p>
+            <strong>California “Shine the Light.”</strong> We do not disclose personal information to
+            third parties for their own direct-marketing purposes. <strong>We do not knowingly sell
+            or share the personal information of consumers under 16.</strong>
+          </p>
+        </section>
+
+        <section id="intl">
+          <h2><span class="num">14</span>EEA, UK &amp; international transfers</h2>
+          <p>
+            We operate in the United States, and your information may be processed there and in other
+            countries with different data-protection laws. Where we transfer personal information out
+            of the EEA, UK, or Switzerland, we use appropriate safeguards such as the European
+            Commission’s Standard Contractual Clauses. EEA/UK users may lodge a complaint with their
+            local supervisory authority and may contact our data-protection inbox at
+            <a href="mailto:dpo@aman.app">dpo@aman.app</a>.
+          </p>
+        </section>
+
+        <section id="children">
+          <h2><span class="num">15</span>Children’s privacy</h2>
+          <p>
+            The Services are not directed to children under 13, and we do not knowingly collect
+            personal information from them. You must meet the age requirements in our
+            <a href="terms.html#eligibility">Terms</a> to create an account. If you believe a child
+            has provided us personal information, contact <a href="mailto:privacy@aman.app">privacy@aman.app</a>
+            and we will delete it.
+          </p>
+        </section>
+
+        <section id="public">
+          <h2><span class="num">16</span>Public records &amp; registry data</h2>
+          <p>
+            Aman displays public-safety records — including incident data and sex-offender registry
+            information — sourced from government systems such as the FBI’s Crime Data Explorer and
+            the U.S. Department of Justice NSOPW. These records concern third parties and are
+            published by their official sources; Aman does not control their content or accuracy and
+            timestamps each record’s source. Registry information is provided for public awareness
+            and may be used <strong>only</strong> for lawful purposes — never to harass, intimidate,
+            or unlawfully discriminate. See <a href="terms.html#registry-use">Lawful use of registry
+            &amp; public-safety data</a> in our Terms.
+          </p>
+        </section>
+
+        <section id="thirdparty">
+          <h2><span class="num">17</span>Third-party links &amp; services</h2>
+          <p>
+            The Services may link to third-party websites and integrate third-party services. Their
+            privacy practices are governed by their own policies, and we are not responsible for
+            them. Please review those policies before providing information.
+          </p>
+        </section>
+
+        <section id="changes">
+          <h2><span class="num">18</span>Changes to this policy</h2>
+          <p>
+            We may update this Policy from time to time. We will post the updated version with a new
+            “Last updated” date and, for material changes, provide additional notice as required by
+            law. Your continued use of the Services after the effective date means you accept the
+            updated Policy.
+          </p>
+        </section>
+
+        <section id="contact">
+          <h2><span class="num">19</span>Contact us</h2>
+          <p>
+            Questions about this Policy or your information? Contact us:
+          </p>
+          <ul>
+            <li>Email: <a href="mailto:privacy@aman.app">privacy@aman.app</a> (data-protection inbox: <a href="mailto:dpo@aman.app">dpo@aman.app</a>)</li>
+            <li>Mail: <strong>[Aman Legal Entity]</strong>, [Mailing Address]</li>
+          </ul>
+          <div class="legal-note">
+            Aman is an awareness tool, not an emergency or law-enforcement service. In an emergency,
+            always call <strong>911</strong>.
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" aria-labelledby="footer-heading">
+    <h2 id="footer-heading" class="visually-hidden">Footer</h2>
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="index.html" aria-label="Aman — home">
+          <span class="seal seal--sm"><img src="assets/aman-logo.png" alt="" width="38" height="38" /></span>
+          <span class="brand__word">Aman</span>
+        </a>
+        <p class="footer__blurb">
+          Community safety intelligence for every U.S. state and territory. Live crime,
+          registry, alerts and news — with Amanix to help you make sense of it.
+        </p>
+        <span class="pill pill--live pill--sm">
+          <span class="pill__dot" aria-hidden="true"></span>
+          All systems live
+        </span>
+      </div>
+      <nav class="footer__col" aria-label="Product">
+        <h3 class="footer__heading">Product</h3>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#amanix">Amanix AI</a>
+        <a href="#" data-app-link>Launch app</a>
+      </nav>
+      <nav class="footer__col" aria-label="Data">
+        <h3 class="footer__heading">Data</h3>
+        <a href="index.html#data">Sources</a>
+        <a href="index.html#data">Coverage</a>
+        <a href="index.html#faq">Accuracy</a>
+      </nav>
+      <nav class="footer__col" aria-label="Company">
+        <h3 class="footer__heading">Company</h3>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <a href="#">Careers</a>
+      </nav>
+      <nav class="footer__col" aria-label="Legal">
+        <h3 class="footer__heading">Legal</h3>
+        <a href="privacy.html" aria-current="page">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="index.html#data">Data &amp; sources</a>
+      </nav>
+    </div>
+    <div class="container footer__bottom">
+      <span>© <span id="year">2026</span> Aman. Built for every American neighborhood.</span>
+      <span class="footer__fine">In an emergency, call 911 · Aman is not an emergency service</span>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
